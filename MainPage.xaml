@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WidgetDemoApp.MainPage"
+             Title="Widget Demo App">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- Profile image placeholder, circular (Frame + Image) -->
+            <Frame HeightRequest="120" WidthRequest="120"
+                   CornerRadius="60" IsClippedToBounds="True"
+                   Padding="0" HorizontalOptions="Center">
+                <Image Source="dotnet_bot.png" Aspect="AspectFill" />
+            </Frame>
+
+            <!-- Name / course summary card -->
+            <Frame CornerRadius="16" Padding="16" HasShadow="True">
+                <VerticalStackLayout Spacing="4">
+                    <!-- TODO: replace with YOUR own name and course -->
+                    <Label Text="SURVE VITHIKA ABHIJIT"
+                           FontSize="22" FontAttributes="Bold" />
+                    <Label Text="CS"
+                           FontSize="14" TextColor="Gray" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Like / Message buttons, side by side -->
+            <HorizontalStackLayout Spacing="12" HorizontalOptions="Center">
+                <Button x:Name="LikeButton"
+                        Text="Like (0)"
+                        Clicked="OnLikeClicked" />
+                <Button x:Name="MessageButton"
+                        Text="Message"
+                        Clicked="OnMessageClicked" />
+            </HorizontalStackLayout>
+
+            <!-- Comment entry -->
+            <Entry Placeholder="Add a comment" />
+
+            <!-- Scrollable skill tag list -->
+            <Label Text="Skills" FontAttributes="Bold" FontSize="16" />
+            <CollectionView ItemsSource="{Binding Skills}"
+                             ItemsLayout="HorizontalList"
+                             HeightRequest="60">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="20" Padding="12,6"
+                               BackgroundColor="#EEF0FF" Margin="4">
+                            <Label Text="{Binding .}" VerticalOptions="Center" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
